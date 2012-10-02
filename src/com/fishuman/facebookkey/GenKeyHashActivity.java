@@ -3,13 +3,16 @@ package com.fishuman.facebookkey;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.widget.TextView;
 
+@TargetApi(8)
 public class GenKeyHashActivity extends Activity {
     /** Called when the activity is first created. */
     @Override
@@ -18,7 +21,13 @@ public class GenKeyHashActivity extends Activity {
         setContentView(R.layout.main);
      
         TextView khView = (TextView)findViewById(R.id.keyhash);
-        khView.setText(genKeyHash());
+        
+        String str = genKeyHash();
+        Log.d("GenFBKeyHash", str);
+        khView.setText(str);
+         
+        
+        
     }
     
 	private String genKeyHash() {
